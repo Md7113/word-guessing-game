@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+header{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: bisque;
+}
+h1{
+    font-size: 75px;
+    color: black;
+}
+#start{
+    width: 40px;
+    height: 20px;
+}
+
+body{
+    background-color: rgb(93, 93, 93);
+}
+main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#wordCard{
+    margin-top: 100px;
+    height: 300px;
+    width: 400px;
+    background-color: bisque;
+    border-radius: 15px;
+}
+
+#scoreCard{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 100px;
+    height: 300px;
+    width: 300px;
+    background-color: bisque;
+    border-radius: 15px;
+}
+#scoreCard ul li{
+    font-size: 45px;
+}
+#scoreCard button{
+    width: 45px;
+}
