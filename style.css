@@ -34,6 +34,10 @@ main{
     border-radius: 15px;
 }
 
+#wordCard ul li{
+    font-size: 45px;
+    display:inline-block;
+}
 #scoreCard{
     display:flex;
     flex-direction: column;
