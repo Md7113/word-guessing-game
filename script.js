@@ -20,12 +20,11 @@ wins = 0
 loopVar = 0
 letterArr = []
 var correct = 0
-
+var trueArr = []
 function onStart(){
-        console.log(correct)
-        console.log(letterArr.length)
+        
         correct = 0
-        console.log(correct)
+        
         timer = 30
         
         
@@ -49,24 +48,30 @@ function onStart(){
 
         var wordChoice = randArrEnd[0]
         letterArr = wordChoice.split('')
+        trueArr = []
         for(i=0;i<letterArr.length;i++){
             letterPlace = document.createElement("li")
             letterPlace.setAttribute("id", i)
             letterPlace.setAttribute("data-letter", letterArr[i])
             letterPlace.innerHTML = '-'
-            console.log(letterPlace)
+           
             wordLogVar.appendChild(letterPlace)
+            trueArr.push(false)
         }
 
         
 
-        document.addEventListener("keydown" ,function(event){
+        document.addEventListener("keypress" ,function(event){
+            event.preventDefault()
         console.log(event)
         var key = event.key.toLowerCase()
         for(i = 0;i < letterArr.length ;i++){
-            if(key === letterArr[i]){
+            
+            if(key === letterArr[i] && !trueArr[i]){
+               
                 correctLetter = document.getElementById(i)
                 correctLetter.innerHTML = letterArr[i]
+                trueArr[i] = true
                 correct = correct + 1
             }
         }
@@ -87,12 +92,14 @@ function onStart(){
         }
 
         winInterval = setInterval(function(){
+           
             if(correct === letterArr.length){
                 clearInterval(timerInterval)
                 correct = 0 
                 winsNum = 1 + Number(localStorage.getItem("wins"))
                 localStorage.setItem("wins", winsNum)
                 clearInterval(winInterval)
+                document.removeEventListener("keypress", this,)
             }
         }, 1000)
         
@@ -111,6 +118,7 @@ function setTime(){
             clearInterval(timerInterval)
             loseNum = 1 + Number(localStorage.getItem("loses"))
             localStorage.setItem("loses", loseNum)
+            document.removeEventListener("keypress", this,)
         }
         // if(correct === letterArr.length){
         //     clearInterval(timerInterval)
